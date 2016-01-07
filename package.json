@@ -1,0 +1,21 @@
+{
+  "name": "livanno",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A little guestbook with React & Node using ES2015. Just a simple test.",
+  "main": "bin/server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leny/livanno.git"
+  },
+  "author": {
+    "name": "leny",
+    "email": "info@flatland.be",
+    "url": "http://leny.me"
+  },
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/leny/livanno/issues"
+  },
+  "homepage": "https://github.com/leny/livanno#readme"
+}
