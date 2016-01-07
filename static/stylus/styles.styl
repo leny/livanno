@@ -1,0 +1,157 @@
+/* LivAnnò
+ *
+ * /css/styles.css
+ *
+ * coded by leny@flatLand!
+ * started at 07/01/2016
+ */
+
+@import "kouto-swiss"
+
+normalize()
+box-sizing-reset()
+
+mainBackgroundColor = #60e4e0
+formBackgroundColor = #dbf9f8
+headerTextColor = #157d7a
+linkColor = #6660e4
+visitedColor = #3c34dd
+errorColor = #fc3c49
+
+a
+    color: #6660e4
+    text-decoration: none
+    border-bottom: .1rem solid transparent
+    &:visited
+        color: visitedColor
+    &:hover
+        color: visitedColor
+        border-bottom-color: linkColor
+        transition: all .25s ease-in-out
+
+html
+    background: mainBackgroundColor
+    font: normal 62.5%/1.25 font-stack( "Helvetica" )
+    color: black
+
+main
+    width: 94%
+    max-width: 50rem
+    margin: 2rem auto
+
+header
+    margin: 0 auto 2rem
+    color: headerTextColor
+    h1
+        margin: 0
+        font-weight: 100
+        font-size: 4.8rem
+    p
+        font-size: 1.4rem
+
+.comments
+    h2
+        display: none
+    ul
+        margin: 0
+        padding: 0
+        list-style: none
+        li
+            margin: 0 auto 2rem
+            padding: 2rem
+            clear: fix
+            background: white
+            box-shadow: 0 0 2rem rgba( black, .25 )
+            time
+                display: block
+                width: 45%
+                float: left
+                font-size: 1.3rem
+                font-style: italic
+                color: headerTextColor
+            .author
+                display: block
+                width: 45%
+                float: right
+                font-size: 1.3rem
+                font-weight: bold
+                color: headerTextColor
+                text-align: right
+
+.content
+    p
+        margin: 0 auto 1.5rem
+        font: normal 1.5rem/1.25 font-stack( "Helvetica" )
+
+.form
+    margin: 0 auto 2rem
+    padding: 2rem
+    background: formBackgroundColor
+    box-shadow: 0 0 2rem rgba( black, .25 )
+    h2
+        margin: 0 auto 1.5rem
+        font-size: 2.8rem
+        font-weight: 100
+        line-height: 1.15
+        color: headerTextColor
+
+.error
+    margin: 0 auto 2rem
+    font-weight: bold
+    font-size: 1.4rem
+    color: errorColor
+
+fieldset
+    border: 0
+    margin: 0
+    padding: 0
+
+.form-elt
+    clear: fix
+    margin: 0 auto 1.4rem
+    label
+        display: block
+        width: 33%
+        float: left
+        margin: 0 auto .5rem
+        padding-top: .5rem
+        font-size: 1.4rem
+        text-align: right
+    input, textarea
+        display: block
+        width: 64%
+        float: right
+        padding: .4rem
+        border: .1rem solid mainBackgroundColor
+        font-size: 1.4rem
+        color: mainBackgroundColor
+        resize: none
+        &:focus
+            outline: 0
+            border: .1rem solid headerTextColor
+            color: headerTextColor
+            transition: all .25s ease-in-out
+    textarea
+        height: 7.5rem
+
+.actions
+    text-align center
+    button
+        display: inline-block
+        padding: .5rem 2rem
+        border: 0
+        background: mainBackgroundColor
+        font: 100 2rem/1 font-stack( "Helvetica" )
+        letter-spacing: .1rem
+        color: headerTextColor
+        text-transform: uppercase
+        cursor: pointer
+        &:hover
+            background: headerTextColor
+            color: mainBackgroundColor
+            transition: all .25s ease-in-out
+
+footer
+    margin: 0 auto 2rem
+    font-size: 1.2rem
+    text-align: right
