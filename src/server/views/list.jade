@@ -13,39 +13,13 @@ html( lang="en" )
 
                 p A little guestbook with React &amp; Node using ES2015. Just a simple test.
 
-            section.comments
-                h2 Comments
-
-                ul
-                    each comment in comments
-                        li
-                            .content!= marked( comment.content )
-
-                            time( datetime=( new Date( comment.id ) ).toISOString() )= ( new Date( comment.id ) ).toLocaleString()
-
-                            span.author by #{ comment.author }
-
-            section.form
-                h2 Leave a comment!
-
-                form( action="/", method="post" )
-                    fieldset
-                        if error === "submission"
-                            p.error Oops! There's an error! Please, fill all the fields!
-
-                        if error === "save"
-                            p.error Oops! There was an error with the server! Please, try again!
-
-                        .form-elt
-                            label( for="author" ) Name:
-                            input#author( type="text", name="author", placeholder="Your name", value= error && post.author )/
-
-                        .form-elt
-                            label( for="content" ) Content:
-                            textarea#content( name="content", placeholder="Your message" )= error && post.content
-
-                        .actions
-                            button( type="submit" ) Send
+            .container!= components.render.livanno
 
             footer
                 a( href="http://github.com/leny/livanno" ) leny/livannò
+
+            script.
+                window.app = {
+                    "data": !{ JSON.stringify( components.data ) }
+                };
+            script( src="js/main.js" )

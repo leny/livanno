@@ -19,9 +19,16 @@ export default function( oRequest, oResponse ) { // eslint-disable-line func-sty
             "author": sAuthor,
             "content": sContent
         },
-        aComments = require( sCommentsFilePath ); // eslint-disable-line global-require
+        aComments = JSON.parse( fs.readFileSync( sCommentsFilePath, "utf-8" ) );
 
     if ( !sAuthor || !sContent ) {
+        if ( oRequest.headers[ "x-requested-with" ] === "XMLHttpRequest" ) {
+            return oResponse.json( {
+                "error": "submission",
+                "post": oComment
+            } );
+        }
+
         return oResponse.render( "list.jade", {
             "comments": aComments,
             "error": "submission",
@@ -35,10 +42,24 @@ export default function( oRequest, oResponse ) { // eslint-disable-line func-sty
         if ( oError ) {
             zouti.error( oError, "LivAnnò:post:add" );
             aComments.pop();
+            if ( oRequest.headers[ "x-requested-with" ] === "XMLHttpRequest" ) {
+                return oResponse.json( {
+                    "error": "save",
+                    "post": oComment
+                } );
+            }
+
             return oResponse.render( "list.jade", {
                 "comments": aComments,
                 "error": "save",
                 "post": oComment
+            } );
+        }
+
+        if ( oRequest.headers[ "x-requested-with" ] === "XMLHttpRequest" ) {
+            return oResponse.json( {
+                "comments": aComments,
+                "error": false
             } );
         }
 

@@ -6,10 +6,32 @@
  * started at 07/01/2016
  */
 
+import fs from "fs";
+import React from "react";
+import ReactDomServer from "react-dom/server";
+
+import LivAnno from "../../components/livanno"
+
+let sCommentsFilePath = `${ __dirname }/../../../data/comments.json`;
+
 export default function( oRequest, oResponse ) { // eslint-disable-line func-style
-    let aComments = require( "../../../data/comments.json" ); // eslint-disable-line global-require
+    let aComments = JSON.parse( fs.readFileSync( sCommentsFilePath, "utf-8" ) ),
+        sPreRenderedComponent;
+
+    if ( oRequest.headers[ "x-requested-with" ] === "XMLHttpRequest" ) {
+        return oResponse.json( aComments );
+    }
+
+    sPreRenderedComponent = ReactDomServer.renderToString( <LivAnno comments={ aComments } /> );
 
     oResponse.render( "list.jade", {
-        "comments": aComments
+        "components": {
+            "render": {
+                "livanno": sPreRenderedComponent
+            },
+            "data": {
+                "livanno": aComments
+            }
+        }
     } );
 }

@@ -124,12 +124,11 @@ fieldset
         padding: .4rem
         border: .1rem solid mainBackgroundColor
         font-size: 1.4rem
-        color: mainBackgroundColor
+        color: headerTextColor
         resize: none
         &:focus
             outline: 0
             border: .1rem solid headerTextColor
-            color: headerTextColor
             transition: all .25s ease-in-out
     textarea
         height: 7.5rem
@@ -150,6 +149,8 @@ fieldset
             background: headerTextColor
             color: mainBackgroundColor
             transition: all .25s ease-in-out
+        &:active
+            outline: 0
 
 footer
     margin: 0 auto 2rem
