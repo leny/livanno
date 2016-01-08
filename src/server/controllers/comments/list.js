@@ -18,10 +18,6 @@ export default function( oRequest, oResponse ) { // eslint-disable-line func-sty
     let aComments = JSON.parse( fs.readFileSync( sCommentsFilePath, "utf-8" ) ),
         sPreRenderedComponent;
 
-    if ( oRequest.headers[ "x-requested-with" ] === "XMLHttpRequest" ) {
-        return oResponse.json( aComments );
-    }
-
     sPreRenderedComponent = ReactDomServer.renderToString( <LivAnno comments={ aComments } /> );
 
     oResponse.render( "list.jade", {
