@@ -15,7 +15,7 @@ export default function( oRequest, oResponse ) { // eslint-disable-line func-sty
     let sAuthor = ( oRequest.body.author || "" ).trim(),
         sContent = ( oRequest.body.content || "" ).trim(),
         oComment = {
-            "id": ( new Date() ).getTime(),
+            "id": Date.now(),
             "author": sAuthor,
             "content": sContent
         },
